@@ -1,0 +1,67 @@
+:root {
+  --dark-purple: #3b2a40;
+  --light-purple: #3e2a43;
+  --text-red: #ef5233;
+  --cta-btn-orange: #E66826;
+  --dark-blue-bg: #00154D;
+  --light-blue-bg: #437BBF;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+}
+
+.App {
+  text-align: center;
+  background-color: var(--dark-blue-bg);
+  font-family: Roboto, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0 200px;
+}
+.panel__container {
+  display: flex;
+  align-items: center;
+}
+.nft__display {
+  width: 400px;
+  height: 300px;
+  padding: 200px auto 600px;
+  border: solid 1px white;
+  border-radius: 10px;
+  margin-right: 30px;
+}
+
+.panel  {
+  width: 400px;
+  height: 300px;
+  padding: 200px auto 600px;
+  border: solid 1px white;
+  border-radius: 10px;
+}
+
+.shadow-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.shadow-1:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.shadow-2 {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.shadow-3 {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.shadow-4 {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.shadow-5 {
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}

@@ -1,0 +1,112 @@
+.TS__wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 16px;
+}
+.TS__label {
+  color: white;
+  font-size: 26px;
+  text-align: left;
+  margin-bottom: 6px;
+}
+.TS__btns {
+  display: flex;
+  flex-direction: column;
+}
+.TS__selectBtn {
+  background-color: var(--cta-btn-orange);
+  border: solid 1px var(--cta-btn-orange);
+  padding: 6px 8px;
+  color: white;
+  border-radius: 6px;
+  width: 160px;
+  align-self: flex-end;
+  cursor: pointer;
+
+}
+.TS__advancedBtn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  width: 100px;
+  align-self: flex-end;
+  cursor: pointer;
+}
+.TS__modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.TS__modalContent {
+  background-color: var(--light-blue-bg);
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--light-blue-bg);
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+/* The Close Button */
+.TS__modalClose {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.TS__modalClose:hover,
+.TS__modalClose:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.TS__modalHeader {
+  display: flex;
+  justify-content: space-between;
+}
+.TS__modalTitle {
+  color: white;
+}
+.TS__modalBody {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.TS__nft {
+  /* border: solid 1px white; */
+  border-radius: 6px;
+  padding: 6px 8px;
+  width: 180px;
+  margin: 2px;
+  color: white;
+  margin-bottom: 20px;
+  background-color: #8ba3e1;
+  cursor: pointer;
+}
+.TS__nftImgWrapper {
+  height: 180px;
+}
+.TS__nftName {
+  font-size: 18px;
+}
+.TS__nftImage {
+  border-radius: 6px;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.TS__nftLink a {
+  color: var(--text-red);
+}
+.TS__nftOGOwner {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
