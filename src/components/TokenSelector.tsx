@@ -7,11 +7,12 @@ type Props = {
   onSelectNFT: any,
 };
 
-const TokenSelector = ({ provider }: Props) => {
+const TokenSelector = ({ provider, onSelectNFT }: Props) => {
   const [isFetching, setIsFetching] = useState(false);
   const [tokenList, setTokenList] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeNFT, setActiveNFT] = useState(null);
+  const [isOpenAdvanced, setIsOpenAdvanced] = useState(false);
   async function getAddr(signer: any) {
     const ad = await signer.getAddress();
     return ad;
@@ -21,6 +22,9 @@ const TokenSelector = ({ provider }: Props) => {
     // on component mount - fetch nfts
     fetchNfts();
   }, []);
+  useEffect(() => {
+    onSelectNFT(activeNFT);
+  }, [activeNFT]);
 
   const signer = provider.getSigner();
 
@@ -125,6 +129,24 @@ const TokenSelector = ({ provider }: Props) => {
   const closeModal = () => {
     setIsModalOpen(false);
   }
+  const renderAdvanced = () => {
+    return (
+      <div className="TS__advancedContainer">
+        <div className="TS__advRow">
+          <label htmlFor="tokenAddress" className="TS__advTokenAddrLabel">Token Address</label>
+          <input type="text" name="tokenAddress" className="TS__advTokenAddr" />
+        </div>
+        <div className="TS__advRow">
+          <label htmlFor="tokenId" className="TS__advTokenIdLabel">Token ID</label>
+          <input type="text" name="tokenId" className="TS__advTokenId" />
+        </div>
+        <div className="TS__advRow">
+          <label htmlFor="tokenQty" className="TS__advTokenQtyLabel">Token Quantity</label>
+          <input type="text" name="tokenQty" className="TS__advTokenQty" />
+        </div>
+      </div>
+    )
+  }
 
   /*
   * A component that uses the Covalent API to get a list of the user's wallet's ERC721 and ERC1155 nfts, 
@@ -138,7 +160,10 @@ const TokenSelector = ({ provider }: Props) => {
         <h3 className="TS__label">Consign</h3>
         <div className="TS__btns">
           <button className="TS__selectBtn" onClick={openModal}>Select an NFT</button>
-          <button className="TS__advancedBtn">Advanced ▼</button>
+          <button className="TS__advancedBtn" onClick={() => setIsOpenAdvanced(!isOpenAdvanced)}>Advanced ▼</button>
+        </div>
+        <div className="TS__advanced">
+          {isOpenAdvanced && renderAdvanced()}
         </div>
       </div>
       <div className="TS__modal" style={{display: isModalOpen ? 'block' : 'none'}}>

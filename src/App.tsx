@@ -44,17 +44,16 @@ function App() {
   connect();
   const [activeNFT, setActiveNFT] = useState('');
 
-  const displayNft = (nft: any) => {
+  const displayNft = () => {
     if (activeNFT) {
-      return <ActiveNFT nft={nft} />
+      return <ActiveNFT nft={activeNFT} />
     }
     return (
       <div className="nft__placeholder">
-        Select an NFT
       </div>
     );
   }
-  const handleSelectNFT = nft => {
+  const handleSelectNFT = (nft: any) => {
     setActiveNFT(nft);
   }
 
@@ -66,7 +65,6 @@ function App() {
         </div>
         <div className="panel">
           <div className="tokenInput">
-            Address: {}
             <TokenSelector provider={provider} onSelectNFT={handleSelectNFT}/>
           </div>
         </div>

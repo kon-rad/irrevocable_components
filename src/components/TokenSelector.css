@@ -110,3 +110,22 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.TS__advancedContainer {
+  color: white;
+  font-size: 16px;
+}
+.TS__advRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.TS__advRow input {
+  background-color: var(--input-light-blue);
+  border: none;
+  border-radius: 6px;
+  height: 28px;
+  color: white;
+  width: 65%;
+  margin-left: 10px;
+  padding: 0px 6px;
+}

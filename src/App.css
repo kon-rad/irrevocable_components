@@ -5,15 +5,17 @@
   --cta-btn-orange: #E66826;
   --dark-blue-bg: #00154D;
   --light-blue-bg: #437BBF;
+  --panel-purple: #244185;
+  --input-light-blue: #2560A7;
 }
 
 body {
   font-family: Roboto, sans-serif;
+  background-color: var(--dark-blue-bg);
 }
 
 .App {
   text-align: center;
-  background-color: var(--dark-blue-bg);
   font-family: Roboto, sans-serif;
   display: flex;
   justify-content: center;
@@ -39,6 +41,7 @@ body {
   padding: 200px auto 600px;
   border: solid 1px white;
   border-radius: 10px;
+  background-color: var(--panel-purple);
 }
 
 .shadow-1 {
