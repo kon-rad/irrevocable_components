@@ -177,7 +177,7 @@ const TokenSelector = ({ provider, onSelectNFT, onSelectNFTAdvanced }: Props) =>
       <div className="TS__wrapper">
         <h3 className="TS__label">Consign</h3>
         <div className="TS__btns">
-          <button className="TS__selectBtn" onClick={openModal}>Select an NFT</button>
+          <button className="TS__selectBtn shadow-2" onClick={openModal}>Select an NFT</button>
           <button className="TS__advancedBtn" onClick={() => {setIsAdvancedOpen(!isAdvancedOpen); setActiveNFT(null);} }>Advanced ▼</button>
         </div>
         <div className="TS__advanced">
