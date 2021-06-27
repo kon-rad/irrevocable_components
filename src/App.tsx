@@ -56,6 +56,10 @@ function App() {
   const handleSelectNFT = (nft: any) => {
     setActiveNFT(nft);
   }
+  const handleSelectNFTAdvanced = (nft: any) => {
+    console.log('advanced nft: ', nft);
+    // todo: do something with the manually entered  nft data
+  }
 
   return (
     <div className="App">
@@ -65,7 +69,7 @@ function App() {
         </div>
         <div className="panel">
           <div className="tokenInput">
-            <TokenSelector provider={provider} onSelectNFT={handleSelectNFT}/>
+            <TokenSelector provider={provider} onSelectNFT={handleSelectNFT} onSelectNFTAdvanced={handleSelectNFTAdvanced}/>
           </div>
         </div>
       </div>

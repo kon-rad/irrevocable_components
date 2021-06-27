@@ -1,0 +1,8 @@
+.active__nft {
+  width: 100%;
+  color: white;
+}
+.active__nft img {
+  max-width: 130px;
+  margin: 20px auto;
+}

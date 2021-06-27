@@ -5,14 +5,18 @@ import './TokenSelector.css';
 type Props = {
   provider: any,
   onSelectNFT: any,
+  onSelectNFTAdvanced: any,
 };
 
-const TokenSelector = ({ provider, onSelectNFT }: Props) => {
+const TokenSelector = ({ provider, onSelectNFT, onSelectNFTAdvanced }: Props) => {
   const [isFetching, setIsFetching] = useState(false);
   const [tokenList, setTokenList] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeNFT, setActiveNFT] = useState(null);
-  const [isOpenAdvanced, setIsOpenAdvanced] = useState(false);
+  const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
+  const [tokenAddress, setTokenAddress] = useState('');
+  const [tokenId, setTokenId] = useState('');
+  const [tokenQty, setTokenQty] = useState('');
   async function getAddr(signer: any) {
     const ad = await signer.getAddress();
     return ad;
@@ -51,7 +55,7 @@ const TokenSelector = ({ provider, onSelectNFT }: Props) => {
     // 
     console.log('item: ', item);
     return (
-      <div className="TS__nft shadow-3" onClick={() => setActiveNFT(item)}>
+      <div className="TS__nft shadow-3" onClick={() => { setActiveNFT(item); setIsModalOpen(false); setIsAdvancedOpen(false); }}>
         <div className="TS__nftImgWrapper">
          <img className="TS__nftImage" src={item.image}/>
         </div>
@@ -129,20 +133,34 @@ const TokenSelector = ({ provider, onSelectNFT }: Props) => {
   const closeModal = () => {
     setIsModalOpen(false);
   }
+  const handleInputChange  = (event:any, name:string) => {
+    if (name === 'tokenAddress') {
+      setTokenAddress(event.target.value);
+    } else if (name === 'tokenId') {
+      setTokenId(event.target.value);
+    } else if (name === 'tokenQty') {
+      setTokenQty(event.target.value);
+    }
+    onSelectNFTAdvanced({
+      token_address: tokenAddress,
+      token_id: tokenId,
+      token_quantity: tokenQty,
+    })
+  }
   const renderAdvanced = () => {
     return (
-      <div className="TS__advancedContainer">
+      <div className={`TS__advancedContainer ${isAdvancedOpen ? 'TS__advancedContainer--open' : ''}`}>
         <div className="TS__advRow">
           <label htmlFor="tokenAddress" className="TS__advTokenAddrLabel">Token Address</label>
-          <input type="text" name="tokenAddress" className="TS__advTokenAddr" />
+          <input value={tokenAddress} onChange={(e:any) => handleInputChange(e, 'tokenAddress')} type="text" name="tokenAddress" className="TS__advTokenAddr" />
         </div>
         <div className="TS__advRow">
           <label htmlFor="tokenId" className="TS__advTokenIdLabel">Token ID</label>
-          <input type="text" name="tokenId" className="TS__advTokenId" />
+          <input value={tokenId} onChange={(e:any) => handleInputChange(e, 'tokenId')} type="text" name="tokenId" className="TS__advTokenId" />
         </div>
         <div className="TS__advRow">
           <label htmlFor="tokenQty" className="TS__advTokenQtyLabel">Token Quantity</label>
-          <input type="text" name="tokenQty" className="TS__advTokenQty" />
+          <input value={tokenQty} onChange={(e:any) => handleInputChange(e, 'tokenQty')} type="text" name="tokenQty" className="TS__advTokenQty" />
         </div>
       </div>
     )
@@ -160,10 +178,10 @@ const TokenSelector = ({ provider, onSelectNFT }: Props) => {
         <h3 className="TS__label">Consign</h3>
         <div className="TS__btns">
           <button className="TS__selectBtn" onClick={openModal}>Select an NFT</button>
-          <button className="TS__advancedBtn" onClick={() => setIsOpenAdvanced(!isOpenAdvanced)}>Advanced ▼</button>
+          <button className="TS__advancedBtn" onClick={() => {setIsAdvancedOpen(!isAdvancedOpen); setActiveNFT(null);} }>Advanced ▼</button>
         </div>
         <div className="TS__advanced">
-          {isOpenAdvanced && renderAdvanced()}
+          {renderAdvanced()}
         </div>
       </div>
       <div className="TS__modal" style={{display: isModalOpen ? 'block' : 'none'}}>
