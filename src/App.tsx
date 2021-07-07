@@ -33,7 +33,6 @@ const connect = async () => {
  */
 const getProv = () => {
   const prov = new ethers.providers.JsonRpcProvider()
-  debugger
   return prov;
 }
 const  getNet = async () => {
